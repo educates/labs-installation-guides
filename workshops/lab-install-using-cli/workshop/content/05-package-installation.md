@@ -6,7 +6,7 @@ With the configuration created we are ready to perform the installation by
 running the CLI command:
 
 ```terminal:execute
-command: educates admin cluster install --config vcluster-config.yaml
+command: educates admin platform deploy --config vcluster-config.yaml
 ```
 
 Using the Carvel tools linked into the `educates` CLI binary, this will download

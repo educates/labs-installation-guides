@@ -8,7 +8,7 @@ To install into an existing Kubernetes cluster the CLI command which needs to be
 used is:
 
 ```
-educates admin cluster install
+educates admin platform deploy
 ```
 
 Before running this command an appropriate configuration file needs to be
@@ -63,7 +63,7 @@ To see what hidden configuration was added in the case of setting the provider
 to `vcluster`, run:
 
 ```terminal:execute
-command: educates admin cluster install --config vcluster-config.yaml --show-packages-values --skip-image-resolution
+command: educates admin platform values --config vcluster-config.yaml 
 ```
 
 The aim of the opinionated cluster configurations is thus to take a fresh

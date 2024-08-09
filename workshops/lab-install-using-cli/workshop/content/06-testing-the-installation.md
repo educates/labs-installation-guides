@@ -6,7 +6,7 @@ To test that the installation was successful we can deploy a workshop. For this
 we will use a previously published workshop by running the command:
 
 ```terminal:execute
-command: educates deploy-workshop -f https://github.com/vmware-tanzu-labs/lab-k8s-fundamentals/releases/latest/download/workshop.yaml
+command: educates deploy-workshop -f https://github.com/educates/lab-k8s-fundamentals/releases/latest/download/workshop.yaml
 ```
 
 To access the training portal service and browse the workshops hosted by it,
@@ -22,13 +22,17 @@ the command inside the terminal of an Educates workshop session due to browser
 popup restrictions, it should however work were you running it in a terminal on
 your local machine.
 
-For this workshop session therefore, open the following URL:
+For this workshop session therefore, click on the URL displayed in the terminal
+window
+
+Alternatively, click on the URL below.
 
 ```dashboard:open-url
 url: http://educates-cli-ui.{{< param session_hostname >}}
 ```
 
-When prompted for an access code, enter in the password obtained by running:
+In this later case, because an access token isn't included in the URL, you will
+be prompted for an access code. Enter in the password obtained by running:
 
 ```terminal:execute
 command: educates view-credentials

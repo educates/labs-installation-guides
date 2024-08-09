@@ -19,7 +19,7 @@ spec:
     - name: educates
       files:
       - image:
-          url: $(oci_image_cache)/educates-client-programs:installer-clean
+          url: $(oci_image_cache)/educates-client-programs:3.0.0-alpha.10
         path: bin
         includePaths:
         - educates-linux-$(platform_arch)
@@ -53,11 +53,11 @@ spec:
       vcluster:
         enabled: false
     volumes:
-    - name: admin-credentials-config
+    - name: vcluster-kubeconfig
       secret:
         secretName: $(session_name)-kubeconfig
     volumeMounts:
-    - name: admin-credentials-config
+    - name: vcluster-kubeconfig
       mountPath: /opt/kubeconfig
     dashboards:
     - name: Docs
@@ -66,7 +66,7 @@ spec:
     - apiVersion: v1
       kind: Secret
       metadata:
-        name: $(session_name)-admin-vcluster-values
+        name: $(session_name)-vcluster-values
         namespace: $(workshop_namespace)
       stringData:
         values.yaml: |
@@ -74,8 +74,9 @@ spec:
             image: rancher/k3s:v1.25.3-k3s1
           syncer:
             extraArgs:
-            - --tls-san=admin-vcluster.$(session_namespace).svc.$(cluster_domain)
-            - --out-kube-config-server=https://admin-vcluster.$(session_namespace).svc.$(cluster_domain)
+            - --tls-san=cluster-1-vcluster.$(session_namespace).svc.$(cluster_domain)
+            - --out-kube-config-server=https://cluster-1-vcluster.$(session_namespace).svc.$(cluster_domain)
+            - --kube-config-context-name=cluster-1
           mapServices:
             fromHost:
             - from: $(workshop_namespace)/registry-$(session_name)
@@ -85,10 +86,12 @@ spec:
           sync:
             ingresses:
               enabled: true
+          exportKubeConfig:
+            context: "cluster-1"
     - apiVersion: kappctrl.k14s.io/v1alpha1
       kind: App
       metadata:
-        name: $(session_name)-admin-vcluster-package
+        name: $(session_name)-vcluster-package
         namespace: $(workshop_namespace)
       spec:
         serviceAccountName: kapp-installer
@@ -101,11 +104,11 @@ spec:
               url: https://charts.loft.sh
         template:
         - helmTemplate:
-            name: admin-vcluster
+            name: cluster-1-vcluster
             namespace: $(session_namespace)
             valuesFrom:
             - secretRef:
-                name: $(session_name)-admin-vcluster-values
+                name: $(session_name)-vcluster-values
         - ytt:
             inline:
               paths:
@@ -134,7 +137,7 @@ spec:
       spec:
         rules:
         - sourceSecret:
-            name: vc-admin-vcluster
+            name: vc-cluster-1-vcluster
             namespace: $(session_namespace)
           targetNamespaces:
             nameSelector:
@@ -175,7 +178,7 @@ spec:
       registries:
       - content:
         - destination: /educates-client-programs
-          prefix: /jorgemoralespou/educates-client-programs
+          prefix: /vmware-tanzu-labs/educates-client-programs
           stripPrefix: true
         onDemand: true
         urls:
