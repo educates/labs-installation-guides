@@ -18,7 +18,7 @@ text: |
         namespace: educates-config
     spec:
         client:
-            password: super-secret
+            password: custom-portal
         roles:
             - tenant
         tenants:
