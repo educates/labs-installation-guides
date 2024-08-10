@@ -20,7 +20,7 @@ API. This means that a custom front end web portal may need to handle being able
 to talk to multiple separate training portals.
 
 When multiple Educates clusters are used in order to distribute load across
-multiple Kubernetes cluster, or in order to provide a level of fault tolerance
+multiple Kubernetes clusters, or in order to provide a level of fault tolerance
 for availability of a specific workshop by hosting it on multiple Educates
 clusters, the custom front end web portal would need to also handle talking
 to the different clusters.
