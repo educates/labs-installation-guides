@@ -7,7 +7,7 @@ clusters. In this case where we have installed the lookup service co-located
 with Educates itself, we will configure the lookup service to monitor just
 the cluster it is installed into.
 
-In this case the configuration which needs to be used is as follows.
+The configuration which needs to be used is as follows.
 
 ```editor:append-lines-to-file
 file: ~/cluster-config.yaml

@@ -18,11 +18,11 @@ In this workshop we will not go into all aspects of specifying such rules and
 will instead cover them in detail in a separate workshop where we show an
 example of working with multiple clusters.
 
-For this simple case of a single cluster, we will use the following tenant
-configuration:
+For this simple case of a single cluster, we will use the following
+configuration for a single tenant:
 
 ```editor:append-lines-to-file
-file: ~/tenant-configs.yaml
+file: ~/tenant-config.yaml
 text: |
     apiVersion: lookup.educates.dev/v1beta1
     kind: TenantConfig
@@ -38,31 +38,10 @@ text: |
             nameSelector:
                 matchNames:
                 - portal-1
-    ---
-    apiVersion: lookup.educates.dev/v1beta1
-    kind: TenantConfig
-    metadata:
-        name: tenant-2
-        namespace: educates-config
-    spec:
-        clusters:
-            nameSelector:
-                matchNames:
-                - local-cluster
-        portals:
-            nameSelector:
-                matchNames:
-                - portal-1
-                - portal-2
 ```
-
-With this configuration we have defined two logical tenants, `tenant-1` and
-`tenant-2`. Both only have access to the local cluster. The first tenant will
-also only have access to the training portal named `portal-1`. The second
-tenant will have access to both `portal-1` and `portal-2`.
 
 Apply this configuration by running:
 
 ```terminal:execute
-command: kubectl apply -f ~/tenant-configs.yaml
+command: kubectl apply -f ~/tenant-config.yaml
 ```

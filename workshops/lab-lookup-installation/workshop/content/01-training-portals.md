@@ -1,5 +1,5 @@
 ---
-title: Requesting Workshops
+title: Training Portals
 ---
 
 When a workshop is installed, it is associated with a training portal. The
@@ -29,9 +29,11 @@ In the case where multiple Educates clusters are used to host the same set of
 workshops, the custom front end web portal will need to be able to track where
 the workshops are available, how much capacity the clusters have, and which have
 the capacity to create an instance of a workshop session, or which may have
-sessions for a workshop already ready in reserve to be allocated to users.
+sessions for a workshop already ready in reserve to be allocated to users. This
+is all necessary so that the custom front end web portal can make a decision
+as to which is the best cluster to allocate a new workshop session on.
 
 Because dealing with multiple clusters and training portals, including tracking
 of the states of each, can be non trivial, Educates 3.0 introduces a new lookup
-service which runs in front of Educates, providing a single REST API access
-point for requesting workshops.
+service which runs in front of any training portals, including across multiple
+clusters, providing a single REST API access point for requesting workshops.
