@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: educates-config
+---
+apiVersion: lookup.educates.dev/v1beta1
+kind: ClusterConfig
+metadata:
+  name: local-cluster
+  namespace: educates-config
+---
+apiVersion: lookup.educates.dev/v1beta1
+kind: ClientConfig
+metadata:
+  name: admin
+  namespace: educates-config
+spec:
+  client:
+    password: super-secret
+  roles:
+    - admin
