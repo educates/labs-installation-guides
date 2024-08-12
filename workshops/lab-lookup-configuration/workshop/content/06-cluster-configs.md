@@ -7,7 +7,7 @@ clusters. These refer to the `kubeconfig` files embedded in the secrets we just
 created.
 
 ```files:copy-file
-path: remote-clusters-v1.yaml
+path: cluster-configs-v1.yaml
 preview: true
 ```
 
@@ -21,7 +21,7 @@ belong to and what type of environment (production or staging).
 Apply the configurations for the remote clusters.
 
 ```terminal:execute
-command: kubectl apply --context hub -f remote-clusters-v1.yaml
+command: kubectl apply --context hub -f cluster-configs-v1.yaml
 ```
 
 Verify that the lookup service has registered the remote clusters by running

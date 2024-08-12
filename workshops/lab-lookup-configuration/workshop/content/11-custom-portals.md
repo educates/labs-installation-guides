@@ -19,7 +19,7 @@ The first API they can use allows them to list what workshops they have
 available via a specific tenant that they have access to.
 
 ```terminal:execute
-command: |
+command: |-
   curl --silent -X GET -H "Authorization: Bearer ${PORTAL_1_ACCESS_TOKEN}" http://educates-api.hub.{{< param session_name >}}.{{< param ingress_domain >}}/api/v1/tenants/customer-1-production/workshops | jq
 ```
 

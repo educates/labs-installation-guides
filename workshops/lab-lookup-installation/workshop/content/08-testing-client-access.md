@@ -9,7 +9,7 @@ be used in subsequent requests.
 To test access using the admin user, login using the command:
 
 ```terminal:execute
-command: |
+command: |-
   ACCESS_TOKEN=$(curl --silent -X POST http://educates-api.{{< param session_name >}}.{{< param ingress_domain >}}/login -H "Content-Type: application/json" -d '{"username": "admin", "password": "super-secret"}' | jq -r -e .access_token) && echo $ACCESS_TOKEN
 ```
 
@@ -22,7 +22,7 @@ means of querying the state of the lookup service.
 For example, to query the clusters which are being monitored run:
 
 ```terminal:execute
-command: |
+command: |-
   curl --silent -X GET -H "Authorization: Bearer ${ACCESS_TOKEN}" http://educates-api.{{< param session_name >}}.{{< param ingress_domain >}}/api/v1/clusters | jq
 ```
 
@@ -31,7 +31,7 @@ In this case we only have the local cluster.
 You can also see the set of accessible training portals by running:
 
 ```terminal:execute
-command: |
+command: |-
   curl --silent -X GET -H "Authorization: Bearer ${ACCESS_TOKEN}" http://educates-api.{{< param session_name >}}.{{< param ingress_domain >}}/api/v1/portals | jq
 ```
 
@@ -50,6 +50,6 @@ list is returned again, wait a moment and try once again. You will be able to
 see from the lookup service logs when the training portal has been registered.
 
 ```terminal:execute
-command: |
+command: |-
   curl --silent -X GET -H "Authorization: Bearer ${ACCESS_TOKEN}" http://educates-api.{{< param session_name >}}.{{< param ingress_domain >}}/api/v1/portals | jq
 ```

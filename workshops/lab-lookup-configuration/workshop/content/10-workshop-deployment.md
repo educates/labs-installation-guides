@@ -19,14 +19,14 @@ workshops may take a few moments, but once done you can check that each is
 available separately via the respective tenants by running:
 
 ```terminal:execute
-command: |
+command: |-
   curl --silent -X GET -H "Authorization: Bearer ${ADMIN_ACCESS_TOKEN}" http://educates-api.hub.{{< param session_name >}}.{{< param ingress_domain >}}/api/v1/clusters/remote-cluster-1/portals/portal-1/environments | jq
 ```
 
 and:
 
 ```terminal:execute
-command: |
+command: |-
   curl --silent -X GET -H "Authorization: Bearer ${ADMIN_ACCESS_TOKEN}" http://educates-api.hub.{{< param session_name >}}.{{< param ingress_domain >}}/api/v1/clusters/remote-cluster-2/portals/portal-1/environments | jq
 ```
 

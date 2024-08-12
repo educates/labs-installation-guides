@@ -1,0 +1,27 @@
+apiVersion: lookup.educates.dev/v1beta1
+kind: ClusterConfig
+metadata:
+  name: remote-cluster-1
+  namespace: educates-config
+spec:
+  credentials:
+    kubeconfig:
+      secretRef:
+        name: kubeconfig-cluster-1
+  labels:
+    - name: customer
+      value: customer-1
+---
+apiVersion: lookup.educates.dev/v1beta1
+kind: ClusterConfig
+metadata:
+  name: remote-cluster-2
+  namespace: educates-config
+spec:
+  credentials:
+    kubeconfig:
+      secretRef:
+        name: kubeconfig-cluster-2
+  labels:
+    - name: customer
+      value: customer-1

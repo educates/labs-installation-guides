@@ -11,7 +11,7 @@ maintained within a separate database of the custom front end web portal, to
 then request a workshop session can be done using:
 
 ```terminal:execute
-command: |
+command: |-
   curl --silent -X POST -H "Authorization: Bearer ${ACCESS_TOKEN}" -H "Content-Type: application/json" -d '{"tenantName": "tenant-1", "workshopName": "lab-k8s-fundamentals", "clientIndexUrl": "https://www.example.com", "clientUserId": "end-user-id"}' http://educates-api.{{< param session_name >}}.{{< param ingress_domain >}}/api/v1/workshops | jq
 ```
 

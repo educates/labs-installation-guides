@@ -11,7 +11,7 @@ To test this, we will login using the user we created which had the tenant
 role, instead of the admin user.
 
 ```terminal:execute
-command: |
+command: |-
   ACCESS_TOKEN=$(curl --silent -X POST http://educates-api.{{< param session_name >}}.{{< param ingress_domain >}}/login -H "Content-Type: application/json" -d '{"username": "custom-portal", "password": "my-secret"}' | jq -r -e .access_token) && echo $ACCESS_TOKEN
 ```
 
@@ -24,7 +24,7 @@ To query the set of workshops for the tenant with name `tenant-1`, run the
 command:
 
 ```terminal:execute
-command: |
+command: |-
   curl --silent -X GET -H "Authorization: Bearer ${ACCESS_TOKEN}" http://educates-api.{{< param session_name >}}.{{< param ingress_domain >}}/api/v1/tenants/tenant-1/workshops | jq
 ```
 
@@ -45,7 +45,7 @@ and try once again. You will be able to see from the lookup service logs when
 the workhop has been registered.
 
 ```terminal:execute
-command: |
+command: |-
   curl --silent -X GET -H "Authorization: Bearer ${ACCESS_TOKEN}" http://educates-api.{{< param session_name >}}.{{< param ingress_domain >}}/api/v1/tenants/tenant-1/workshops | jq
 ```
 

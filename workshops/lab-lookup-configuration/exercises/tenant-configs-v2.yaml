@@ -1,0 +1,29 @@
+apiVersion: lookup.educates.dev/v1beta1
+kind: TenantConfig
+metadata:
+  name: customer-1-production
+  namespace: educates-config
+spec:
+  clusters:
+    labelSelector:
+      matchLabels:
+        customer: customer-1
+  portals:
+    labelSelector:
+      matchLabels:
+        environment: production
+---
+apiVersion: lookup.educates.dev/v1beta1
+kind: TenantConfig
+metadata:
+  name: customer-1-staging
+  namespace: educates-config
+spec:
+  clusters:
+    labelSelector:
+      matchLabels:
+        customer: customer-1
+  portals:
+    labelSelector:
+      matchLabels:
+        environment: staging
