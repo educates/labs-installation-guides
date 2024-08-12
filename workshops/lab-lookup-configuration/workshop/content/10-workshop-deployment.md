@@ -16,7 +16,7 @@ using the same workshop.
 
 As with deployment of training portals, deployment and registration of the
 workshops may take a few moments, but once done you can check that each is
-available separately via the respective tenants by running:
+available separately via the respective portals by running:
 
 ```terminal:execute
 command: |-
