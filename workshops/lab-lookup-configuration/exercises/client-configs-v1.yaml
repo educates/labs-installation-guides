@@ -1,0 +1,25 @@
+apiVersion: lookup.educates.dev/v1beta1
+kind: ClientConfig
+metadata:
+  name: custom-portal-1
+  namespace: educates-config
+spec:
+  client:
+    password: secret-1
+  roles:
+    - tenant
+  tenants:
+    - customer-1-production
+---
+apiVersion: lookup.educates.dev/v1beta1
+kind: ClientConfig
+metadata:
+  name: custom-portal-2
+  namespace: educates-config
+spec:
+  client:
+    password: secret-2
+  roles:
+    - tenant
+  tenants:
+    - customer-1-staging

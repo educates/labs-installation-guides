@@ -14,11 +14,11 @@ text: |
     apiVersion: lookup.educates.dev/v1beta1
     kind: ClientConfig
     metadata:
-        name: tenant-1
+        name: custom-portal
         namespace: educates-config
     spec:
         client:
-            password: custom-portal
+            password: my-secret
         roles:
             - tenant
         tenants:

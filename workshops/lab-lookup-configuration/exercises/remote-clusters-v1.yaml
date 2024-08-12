@@ -11,6 +11,8 @@ spec:
   labels:
     - name: customer
       value: customer-1
+    - name: environment
+      value: production
 ---
 apiVersion: lookup.educates.dev/v1beta1
 kind: ClusterConfig
@@ -21,7 +23,9 @@ spec:
   credentials:
     kubeconfig:
       secretRef:
-        name: kubeconfig-cluster-1
+        name: kubeconfig-cluster-2
   labels:
     - name: customer
-      value: customer-2
+      value: customer-1
+    - name: environment
+      value: staging

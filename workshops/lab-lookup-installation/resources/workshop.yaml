@@ -19,8 +19,7 @@ spec:
     - name: educates
       files:
       - image:
-          # url: $(oci_image_cache)/educates-client-programs:3.0.0-alpha.10
-          url: $(oci_image_cache)/educates-client-programs:lookup-service-fixes
+          url: $(oci_image_cache)/educates-client-programs:3.0.0-alpha.12
         path: bin
         includePaths:
         - educates-linux-$(platform_arch)
@@ -179,8 +178,7 @@ spec:
       registries:
       - content:
         - destination: /educates-client-programs
-          # prefix: /vmware-tanzu-labs/educates-client-programs
-          prefix: /grahamdumpleton/educates-client-programs
+          prefix: /vmware-tanzu-labs/educates-client-programs
           stripPrefix: true
         onDemand: true
         urls:

@@ -19,8 +19,8 @@ spec:
     - name: educates
       files:
       - image:
-          # url: $(oci_image_cache)/educates-client-programs:3.0.0-alpha.10
-          url: $(oci_image_cache)/educates-client-programs:lookup-service-fixes
+            # url: $(oci_image_cache)/educates-client-programs:3.0.0-alpha.12
+            url: $(oci_image_cache)/educates-client-programs:lookup-service-tweaks
         path: bin
         includePaths:
         - educates-linux-$(platform_arch)
@@ -328,8 +328,8 @@ spec:
             key: config
         fetch:
         - imgpkgBundle:
-            # image: ghcr.io/vmware-tanzu-labs/educates-installer:3.0.0-alpha.10
-            image: ghcr.io/grahamdumpleton/educates-installer:lookup-service-fixes
+            # image: ghcr.io/vmware-tanzu-labs/educates-installer:3.0.0-alpha.12
+            image: ghcr.io/grahamdumpleton/educates-installer:lookup-service-tweaks
         deploy:
         - kapp:
             rawOptions:
@@ -383,8 +383,8 @@ spec:
             key: config
         fetch:
         - imgpkgBundle:
-            # image: ghcr.io/vmware-tanzu-labs/educates-installer:3.0.0-alpha.10
-            image: ghcr.io/grahamdumpleton/educates-installer:lookup-service-fixes
+            # image: ghcr.io/vmware-tanzu-labs/educates-installer:3.0.0-alpha.12
+            image: ghcr.io/grahamdumpleton/educates-installer:lookup-service-tweaks
         deploy:
         - kapp:
             rawOptions:
@@ -521,8 +521,8 @@ spec:
             key: config
         fetch:
         - imgpkgBundle:
-            # image: ghcr.io/vmware-tanzu-labs/educates-installer:3.0.0-alpha.10
-            image: ghcr.io/grahamdumpleton/educates-installer:lookup-service-fixes
+            # image: ghcr.io/vmware-tanzu-labs/educates-installer:3.0.0-alpha.12
+            image: ghcr.io/grahamdumpleton/educates-installer:lookup-service-tweaks
         deploy:
         - kapp:
             rawOptions:

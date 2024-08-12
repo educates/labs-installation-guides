@@ -1,5 +1,5 @@
 ---
-title: Admin Client Access
+title: Admin User Access
 ---
 
 The first step we will perform in configuring the lookup service is add an admin

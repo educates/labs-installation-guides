@@ -3,7 +3,7 @@ title: Kubeconfig Secret
 ---
 
 We now need to create Kubernetes secrets in the `educates-config` namespace of
-the `hub` cluster for the lookup service to use.
+the `hub` cluster for each of the `kubeconfig` files for the remote clusters.
 
 ```terminal:execute
 command: |-
