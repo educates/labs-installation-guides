@@ -1,0 +1,25 @@
+apiVersion: training.educates.dev/v1beta1
+kind: TrainingPortal
+metadata:
+  name: labs-installation-guides
+spec:
+  portal:
+    title: Educates Installation
+    registration:
+      type: anonymous
+    updates:
+      workshop: true
+    sessions:
+      maximum: 1
+    workshop:
+      defaults:
+        reserved: 1
+        initial: 0
+        expires: 30m
+        overtime: 10m
+        deadline: 60m
+        orphaned: 5m
+  workshops:
+    - name: lab-installation-via-cli
+    - name: lab-lookup-installation
+    - name: lab-lookup-configuration

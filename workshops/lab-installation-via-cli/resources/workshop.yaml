@@ -6,11 +6,11 @@ spec:
   title: "Educates installation using the CLI"
   description: "A workshop on installing Educates using the CLI."
   publish:
-    image: "$(image_repository)/lab-installation-via-cli-files:$(workshop_version)"
+    image: "$(image_repository)/labs-installation-guides/lab-installation-via-cli-files:$(workshop_version)"
   workshop:
     files:
     - image:
-        url: "$(image_repository)/lab-installation-via-cli-files:$(workshop_version)"
+        url: "$(image_repository)/labs-installation-guides/lab-installation-via-cli-files:$(workshop_version)"
       includePaths:
       - /workshop/**
       - /exercises/**
