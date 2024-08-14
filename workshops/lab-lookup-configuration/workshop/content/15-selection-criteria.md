@@ -6,8 +6,9 @@ In the examples we used for this workshop we employed a label selector to match
 on clusters and training portals.
 
 The use of labels provides the most flexibility as they can easily be updated
-for a cluster or training portal without needing to change the name of the
-resource, which would be the case if name based matching were used.
+for a cluster or training portal without needing to delete and recreate a
+resource, which would be the case if name based matching were used and you
+needed to change the name of a resource.
 
 Do note that labels matched by the lookup service are not Kubernetes labels
 declared in the resource metadata but are labels specific to Educates which are

@@ -3,8 +3,7 @@ title: Admin User Access
 ---
 
 The first step we will perform in configuring the lookup service is add an admin
-user for accessing the respective lookup service REST APIs, and allow it to
-access details about Educates running on the local cluster. The configuration
+user for accessing the lookup service on the `hub` cluster. The configuration
 for this is:
 
 ```files:copy-file
@@ -12,23 +11,24 @@ path: admin-config.yaml
 preview: true
 ```
 
-This includes a `ClusterConfig` which is used to specify what cluster to monitor
-and a `ClientConfig`, which is used to configure a user.
+This includes a `ClientConfig` which is used to configure a user.
 
 The admin user has the special role `admin` and can be used for querying the
-state of each Educates cluster via the lookup service. This user should not be
-used by a custom front end web portal which only needs to request workshop
-sessions. When requesting workshop sessions a user with role `tenant` is instead
-used, which we will get to later.
+state of any monitored Educates cluster via the lookup service. This user should
+not be used by a custom front end web portal which only needs to request
+workshop sessions. When requesting workshop sessions a user with role `tenant`
+is instead used, which we will get to later.
 
-To apply this to each of our three clusters run:
+Configuration for the lookup service needs to be added to the `educates-config`
+namespace. Since this namespace doesn't exist by default, first create it.
+
+```terminal:execute
+command: kubectl create ns educates-config
+```
+
+You can then apply the configuration by running:
 
 ```terminal:execute
 command: |-
   kubectl apply --context hub -f admin-config.yaml
-  kubectl apply --context cluster-1 -f admin-config.yaml
-  kubectl apply --context cluster-2 -f admin-config.yaml
 ```
-
-Note that this will also create the `educates-config` namespace in each cluster,
-which is where lookup service configuration needs to be placed.

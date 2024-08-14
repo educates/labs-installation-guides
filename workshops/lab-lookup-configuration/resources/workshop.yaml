@@ -20,7 +20,7 @@ spec:
       files:
       - image:
             # url: $(oci_image_cache)/educates-client-programs:3.0.0-alpha.12
-            url: $(oci_image_cache)/educates-client-programs:lookup-service-tweaks
+            url: $(oci_image_cache)/educates-client-programs:lookup-service-failures
         path: bin
         includePaths:
         - educates-linux-$(platform_arch)
@@ -329,7 +329,7 @@ spec:
         fetch:
         - imgpkgBundle:
             # image: ghcr.io/vmware-tanzu-labs/educates-installer:3.0.0-alpha.12
-            image: ghcr.io/grahamdumpleton/educates-installer:lookup-service-tweaks
+            image: ghcr.io/grahamdumpleton/educates-installer:lookup-service-failures
         deploy:
         - kapp:
             rawOptions:
@@ -384,7 +384,7 @@ spec:
         fetch:
         - imgpkgBundle:
             # image: ghcr.io/vmware-tanzu-labs/educates-installer:3.0.0-alpha.12
-            image: ghcr.io/grahamdumpleton/educates-installer:lookup-service-tweaks
+            image: ghcr.io/grahamdumpleton/educates-installer:lookup-service-failures
         deploy:
         - kapp:
             rawOptions:
@@ -522,7 +522,7 @@ spec:
         fetch:
         - imgpkgBundle:
             # image: ghcr.io/vmware-tanzu-labs/educates-installer:3.0.0-alpha.12
-            image: ghcr.io/grahamdumpleton/educates-installer:lookup-service-tweaks
+            image: ghcr.io/grahamdumpleton/educates-installer:lookup-service-failures
         deploy:
         - kapp:
             rawOptions:

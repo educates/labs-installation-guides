@@ -2,22 +2,6 @@
 title: Local Cluster
 ---
 
-The `ClusterConfig` we used in the prior step was:
-
-```
-apiVersion: lookup.educates.dev/v1beta1
-kind: ClusterConfig
-metadata:
-  name: local-cluster
-  namespace: educates-config
-```
-
-You will note that there is no `spec` section within this resource definition.
-The lack of any details about how to connect to a cluster will result in this
-named cluster being linked to the local cluster that the lookup service is
-running in. The name used to refer to the cluster when required will be
-`local-cluster`.
-
 To test that the configuration is working, we can use the admin user to login
 to the lookup service and start making queries about the state of the lookup
 service.
@@ -38,4 +22,19 @@ For example, to query the clusters which are being monitored run:
 ```terminal:execute
 command: |-
   curl --silent -X GET -H "Authorization: Bearer ${ADMIN_ACCESS_TOKEN}" http://educates-api.hub.{{< param session_name >}}.{{< param ingress_domain >}}/api/v1/clusters | jq
+```
+
+Right now this should return an empty list as we have not yet configured the
+lookup service to monitor any Educates clusters.
+
+We could have applied a `ClusterConfig` as follows to the `hub` cluster to allow
+us to monitor the `hub` cluster itself, but for this workshop we only want to
+monitor the remote clusters.
+
+```
+apiVersion: lookup.educates.dev/v1beta1
+kind: ClusterConfig
+metadata:
+  name: local-cluster
+  namespace: educates-config
 ```

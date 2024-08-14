@@ -27,4 +27,7 @@ command: kubectl get ingress/lookup-service --context hub -n educates
 
 Although a complete Educates installation has been deployed to the `hub` virtual
 cluster, for this workshop we will only make use of the lookup service running
-in that cluster to monitor the `cluster-1` and `cluster-2` virtual clusters.
+in that cluster to monitor Educates running in the `cluster-1` and `cluster-2`
+virtual clusters. Conversely, for `cluster-1` and `cluster-2`, we will make use
+of Educates for deploying workshops, but will not use the lookup service in
+those clusters.
