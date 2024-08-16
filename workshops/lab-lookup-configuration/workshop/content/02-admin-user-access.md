@@ -11,8 +11,6 @@ path: admin-config.yaml
 preview: true
 ```
 
-This includes a `ClientConfig` which is used to configure a user.
-
 The admin user has the special role `admin` and can be used for querying the
 state of any monitored Educates cluster via the lookup service. This user should
 not be used by a custom front end web portal which only needs to request

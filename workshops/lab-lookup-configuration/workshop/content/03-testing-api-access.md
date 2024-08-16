@@ -1,5 +1,5 @@
 ---
-title: Local Cluster
+title: Testing API Access
 ---
 
 To test that the configuration is working, we can use the admin user to login
@@ -26,15 +26,3 @@ command: |-
 
 Right now this should return an empty list as we have not yet configured the
 lookup service to monitor any Educates clusters.
-
-We could have applied a `ClusterConfig` as follows to the `hub` cluster to allow
-us to monitor the `hub` cluster itself, but for this workshop we only want to
-monitor the remote clusters.
-
-```
-apiVersion: lookup.educates.dev/v1beta1
-kind: ClusterConfig
-metadata:
-  name: local-cluster
-  namespace: educates-config
-```
