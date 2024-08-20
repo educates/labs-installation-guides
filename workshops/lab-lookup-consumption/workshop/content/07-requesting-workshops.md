@@ -18,8 +18,8 @@ The JSON request object needs to be of the form:
 {
   "tenantName": "<name>",
   "workshopName": "<name>",
-  "clientUserId": "<id>",
   "clientIndexUrl": "<url>",
+  "clientUserId": "<id>",
   "clientActionId": "<id>",
   "workshopParams": [
     {
@@ -36,10 +36,10 @@ The request properties are as follows:
   being made.
 * `workshopName` - The name of the workshop for which a session is being
   requested.
-* `clientUserId` - A unique identifier for the end user using the custom front
-  end web portal.
 * `clientIndexUrl` - A URL to which the user should be redirected when the
   workshop session has been completed or has expired.
+* `clientUserId` - An optional unique identifier for the end user using the
+  custom front end web portal.
 * `clientActionId` - An optional tracking ID to identify the request for a
   workshop session.
 * `workshopParams` - An optional list of parameters to be injected into the
@@ -91,6 +91,18 @@ The key property of interest in the response is `sessionActivationUrl` and all
 others are provided for debugging and auditing purposes only.
 
 The custom front end web portal should redirect the user web browser to the URL
-given in `sessionActivationUrl`. This can be as a new browser window, or an
+given in `sessionActivationUrl`. This can be as a new browser window, or a
 browser HTML `iframe` could be used to load the URL resulting in the session
 being embedded with the custom front end web portal web page.
+
+Note that redirection of the users browser to the session activation URL should
+be done immediately and the URL should not be cached for later use. This is
+because the URL session activation token included in the URL will expire after
+60 seconds.
+
+Click on the session activation URL displayed in the terminal window to open
+a new browser window on the workshop session.
+
+If you get that the page could not be found because you did not click before the
+activation token expired, request the workshop again, then click on the URL for
+the new session. Leave the workshop session browser page running for now.
