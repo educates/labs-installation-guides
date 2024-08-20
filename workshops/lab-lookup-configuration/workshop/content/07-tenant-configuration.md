@@ -7,7 +7,7 @@ training portals, and potentially more than one cluster, a means of logically
 partitioning available workshops is required. This is because not all workshops
 should necessarily be accessible to all users of the lookup service.
 
-This mechanism for partioning available workshops is based around the concept
+This mechanism for partitioning available workshops is based around the concept
 of tenants.
 
 For each configured tenant, rules can be specified as to which clusters and

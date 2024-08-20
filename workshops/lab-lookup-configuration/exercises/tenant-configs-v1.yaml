@@ -9,7 +9,6 @@ spec:
       matchLabels:
         customer: customer-1
         environment: production
-        
 ---
 apiVersion: lookup.educates.dev/v1beta1
 kind: TenantConfig
