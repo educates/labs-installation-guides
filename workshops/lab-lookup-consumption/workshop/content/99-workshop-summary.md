@@ -2,7 +2,7 @@
 title: Workshop Summary
 ---
 
-{{< danger >}}
+{{< danger title="More Coming Soon" >}}
 This workshop is still in the process of being completed. Check back soon for
 further updates.
 {{< /danger >}}
