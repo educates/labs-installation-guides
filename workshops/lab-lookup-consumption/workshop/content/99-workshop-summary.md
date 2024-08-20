@@ -2,6 +2,11 @@
 title: Workshop Summary
 ---
 
+{{< danger >}}
+This workshop is still in the process of being completed. Check back soon for
+further updates.
+{{< /danger >}}
+
 You have reached the end of this workshop on using the Educates lookup service.
 For more information about Educates see:
 
