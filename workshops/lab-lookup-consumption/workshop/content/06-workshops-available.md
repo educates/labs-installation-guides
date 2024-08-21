@@ -28,8 +28,8 @@ For this workshop the only tenant that the client can access is called
 `example-tenant`.
 
 To request a list of the workshops available for this tenant, the client should
-use the URL sub path `/api/v1/tenants/workshops`. This should be done as a HTTP
-GET request, with the tenant name being passed via the `tenant` query string
+use the URL sub path `/api/v1/workshops`. This should be done as a HTTP GET
+request, with the tenant name being passed via the `tenant` query string
 parameter.
 
 ```terminal:execute
@@ -38,5 +38,8 @@ command: |-
 ```
 
 Failure to provide the tenant name for this case will result in a HTTP 400
-response. If a tenant name is provided but the client can not access workshops
-for that tenant, a HTTP 403 response will be returned.
+response. If a tenant name is provided and there is no such tenant, or the
+client is not permitted to access workshops for the tenant, a HTTP 403 response
+will be returned. If the case of incomplete configuration of the lookup service
+whereby a client is allowed to access a certain named tenant, but there is no
+configuration for that tenant, a HTTP 503 response will be returned.

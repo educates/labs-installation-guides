@@ -9,8 +9,8 @@ database of the custom front end web portal, a client can request access to an
 instance of that workshop.
 
 To request a workshop available via the tenant, the client again uses the URL
-sub path `/api/v1/tenants/workshops` but this time a HTTP POST request is
-required, with content type `application/json`.
+sub path `/api/v1/workshops` but this time a HTTP POST request is required, with
+content type `application/json`.
 
 The JSON request object needs to be of the form:
 
