@@ -40,6 +40,6 @@ command: |-
 Failure to provide the tenant name for this case will result in a HTTP 400
 response. If a tenant name is provided and there is no such tenant, or the
 client is not permitted to access workshops for the tenant, a HTTP 403 response
-will be returned. If the case of incomplete configuration of the lookup service
+will be returned. In the case of incomplete configuration of the lookup service
 whereby a client is allowed to access a certain named tenant, but there is no
 configuration for that tenant, a HTTP 503 response will be returned.

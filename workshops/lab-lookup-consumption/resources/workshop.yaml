@@ -59,6 +59,11 @@ spec:
       files:
         enabled: true
         directory: exercises
+    ingresses:
+    - name: files
+      port: 11111
+      authentication:
+        type: none
     volumes:
     - name: hub-credentials-config
       secret:

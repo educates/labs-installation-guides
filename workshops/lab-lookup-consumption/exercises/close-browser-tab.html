@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auto Close Browser Tab</title>
+    <script>
+        function closeWindow() {
+            // Attempt to close the window
+            window.close();
+
+            // If the page is still open after a short delay, display the help message
+            setTimeout(function() {
+                if (!window.closed) {
+                    document.getElementById('helpMessage').style.display = 'block';
+                }
+            }, 500); // 500 milliseconds delay
+        }
+
+        // Trigger the close action when the page loads
+        window.onload = closeWindow;
+    </script>
+    <style>
+        #helpMessage {
+            display: none; /* Hide the message initially */
+            font-family: Arial, sans-serif;
+            margin-top: 20px;
+            color: #333;
+            background-color: #f9f9f9;
+            padding: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Attempting to close the page...</h2>
+    <div id="helpMessage">
+        If this page did not close automatically, it is safe to manually close your browser tab or window.
+    </div>
+</body>
+</html>

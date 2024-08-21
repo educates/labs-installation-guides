@@ -103,6 +103,6 @@ because the URL session activation token included in the URL will expire after
 Click on the session activation URL displayed in the terminal window to open
 a new browser window on the workshop session.
 
-If you get that the page could not be found because you did not click before the
-activation token expired, request the workshop again, then click on the URL for
-the new session. Leave the workshop session browser page running for now.
+If you get an error page because you did not click before the activation token
+expired, request the workshop again, then click on the URL for the new session.
+Leave the workshop session browser page running for now.
