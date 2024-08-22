@@ -1,0 +1,124 @@
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: create-training-portal-start-container
+spec:
+  rules:
+    - name: create-configmap
+      match:
+        resources:
+          kinds:
+            - Namespace
+          selector:
+            matchLabels:
+              training.educates.dev/component: portal
+      generate:
+        apiVersion: v1
+        kind: ConfigMap
+        name: training-portal-start-container
+        namespace: "{{request.object.metadata.name}}"
+        data:
+          data:
+            start-container: |
+              #!/bin/bash
+              cat << EOF >> /opt/app-root/src/project/settings.py
+              MIDDLEWARE.remove("django.middleware.security.SecurityMiddleware")
+              MIDDLEWARE.remove("csp.middleware.CSPMiddleware")
+              EOF
+              exec /opt/app-root/bin/start-container
+---
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: patch-training-portal-csp-configuration
+spec:
+  rules:
+    - name: patch-deployments
+      match:
+        resources:
+          kinds:
+            - Deployment
+          selector:
+            matchLabels:
+              training.educates.dev/component: portal
+      mutate:
+        patchStrategicMerge:
+          spec:
+            template:
+              spec:
+                volumes:
+                  - name: start-container
+                    configMap:
+                      name: training-portal-start-container
+                      defaultMode: 0755
+                containers:
+                  - name: "portal"
+                    command:
+                    - /opt/app-root/bootstrap/start-container
+                    volumeMounts:
+                      - name: start-container
+                        mountPath: /opt/app-root/bootstrap/start-container
+                        subPath: start-container
+                        readOnly: true
+---
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: create-workshop-session-start-container
+spec:
+  rules:
+    - name: create-configmap
+      match:
+        resources:
+          kinds:
+            - Namespace
+          selector:
+            matchLabels:
+              training.educates.dev/component: environment
+      generate:
+        apiVersion: v1
+        kind: ConfigMap
+        name: workshop-session-start-container
+        namespace: "{{request.object.metadata.name}}"
+        data:
+          data:
+            start-container: |
+              #!/bin/bash
+              set -x
+              sed -i -e 's/cookie_options\["secure"\] = true;/cookie_options["secure"] = false;/' /opt/gateway/build/backend/server.js
+              exec /usr/bin/start-container
+---
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: patch-workshop-session-csp-configuration
+spec:
+  rules:
+    - name: patch-deployments
+      match:
+        resources:
+          kinds:
+            - Deployment
+          selector:
+            matchLabels:
+              training.educates.dev/application: workshop
+              training.educates.dev/component: session
+      mutate:
+        patchStrategicMerge:
+          spec:
+            template:
+              spec:
+                volumes:
+                  - name: start-container
+                    configMap:
+                      name: workshop-session-start-container
+                      defaultMode: 0755
+                containers:
+                  - name: workshop
+                    command:
+                    - /opt/bootstrap/start-container
+                    volumeMounts:
+                      - name: start-container
+                        mountPath: /opt/bootstrap/start-container
+                        subPath: start-container
+                        readOnly: true

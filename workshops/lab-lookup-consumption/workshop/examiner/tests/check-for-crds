@@ -1,0 +1,4 @@
+#!/bin/bash
+
+kubectl get crd/clusterpolicies.kyverno.io || exit 1
+kubectl get crd/clusterconfigs.lookup.educates.dev || exit 1

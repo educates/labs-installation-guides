@@ -46,14 +46,24 @@ user for doing the workshop and telling them it is now safe to close their
 browser page.
 
 You can test out how your browser behaves by ensuring you have terminated any
-existing workshop sessions you requested, and then running the following. Click
-on the session activation URL returned, and then terminate the workshop session.
+existing workshop sessions you requested by selecting "Terminate Session" from
+the workshop session dashboard drop down menu, and then running the following.
+Click on the session activation URL returned, and then terminate this new
+workshop session.
 
 ```terminal:execute
 command: |-
-  curl --silent -X POST -H "Authorization: Bearer ${ACCESS_TOKEN}" -H "Content-Type: application/json" -d '{"tenantName": "example-tenant", "workshopName": "lab-k8s-fundamentals", "clientIndexUrl": "{{< param ingress_protocol >}}://files-{{< param session_hostname >}}/close-browser-tab.html", "clientUserId": "end-user-id-1"}' http://educates-api.hub.{{< param session_name >}}.{{< param ingress_domain >}}/api/v1/workshops | jq
+  curl --silent -X POST -H "Authorization: Bearer ${ACCESS_TOKEN}" -H "Content-Type: application/json" -d '{"tenantName": "example-tenant", "workshopName": "lab-k8s-fundamentals", "clientIndexUrl": "http://files-{{< param session_hostname >}}/htdocs/close-browser-tab.html", "clientUserId": "end-user-id-1"}' http://educates-api.hub.{{< param session_name >}}.{{< param ingress_domain >}}/api/v1/workshops | jq
+```
+
+If curious as to how the web page the workshop sessions is being redirected to
+is implemented see the `htdocs/close-browser-tab.html` file.
+
+```editor:open-file
+file: ~/exercises/htdocs/close-browser-tab.html
 ```
 
 Remember the above options are where the workshop session is launched in a
 separate browser window or tab. If a workshop session is embedded in an iframe,
-things are a bit more tricky.
+there are further issues that need to be considered. Some of these related to
+notifications also apply to where a separate browser window, so keep reading.

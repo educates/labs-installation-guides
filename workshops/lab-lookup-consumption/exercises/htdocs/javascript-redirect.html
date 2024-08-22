@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Redirect Page</title>
+</head>
+<body>
+    <script>
+        function redirectToTarget() {
+            var target = new URLSearchParams(window.location.search).get('target');
+            if (target) {
+                try {
+                    window.top.location.href = target;
+                } catch (error) {
+                    document.getElementById('redirectButton').style.display = 'block';
+                    document.getElementById('redirectMessage').style.display = 'block';
+                }
+            }
+        }
+    </script>
+
+    <h1>Redirect Page</h1>
+    <p id="redirectMessage">Redirection failed. Please click the button below to redirect.</p>
+    <button id="redirectButton" onclick="redirectToTarget()">Redirect</button>
+
+    <script>
+        redirectToTarget();
+    </script>
+</body>
+</html>

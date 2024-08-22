@@ -40,16 +40,10 @@ spec:
         enabled: true
       console:
         enabled: false
-      docker:
+      examiner:
         enabled: true
-        socket:
-          enabled: true
-        compose:
-          services:
-            registry:
-              image: registry:2.8.3
-              ports:
-              - "0.0.0.0:5001:5000"
+      docker:
+        enabled: false
       registry:
         enabled: false
       git:
@@ -59,11 +53,6 @@ spec:
       files:
         enabled: true
         directory: exercises
-    ingresses:
-    - name: files
-      port: 11111
-      authentication:
-        type: none
     volumes:
     - name: hub-credentials-config
       secret:
@@ -72,35 +61,36 @@ spec:
     - name: hub-credentials-config
       mountPath: /opt/clusters/hub
     objects:
-    # Loopback services for session and registry.
+    - apiVersion: networking.k8s.io/v1
+      kind: Ingress
+      metadata:
+        name: files-$(session_name)
+        namespace: $(workshop_namespace)
+      spec:
+        rules:
+        - host: files-$(session_hostname)
+          http:
+            paths:
+            - path: /
+              pathType: Prefix
+              backend:
+                service:
+                  name: files-$(session_name)
+                  port:
+                    number: 11111
     - apiVersion: v1
       kind: Service
       metadata:
-        name: registry-$(session_name)
+        name: files-$(session_name)
         namespace: $(workshop_namespace)
       spec:
-        type: ClusterIP
         selector:
           deployment: $(session_name)
         ports:
-        - name: registry
-          port: 80
+        - name: files
+          port: 11111
           protocol: TCP
-          targetPort: 5001
-    - apiVersion: v1
-      kind: Service
-      metadata:
-        name: localhost-$(session_name)
-        namespace: $(workshop_namespace)
-      spec:
-        type: ClusterIP
-        selector:
-          deployment: $(session_name)
-        ports:
-        - name: renderer
-          port: 10081
-          protocol: TCP
-          targetPort: 10081
+          targetPort: 11111
     # Virtual cluster for hub.
     - apiVersion: v1
       kind: Secret
@@ -197,15 +187,21 @@ spec:
             provider: vcluster
           clusterPackages:
             kyverno:
-              enabled: false
+              # enabled: false
+              enabled: true
           clusterIngress:
-            domain: "hub.$(session_name).$(ingress_domain)"
+            domain: "hub.$(session_hostname)"
           clusterSecurity:
             policyEngine: none
           workshopSecurity:
             rulesEngine: none
           lookupService:
             enabled: true
+          # websiteStyling:
+          #   frameAncestors:
+          #   - "files-$(session_hostname)"
+          # sessionCookies:
+          #   domain: "hub.$(session_hostname)"
     - apiVersion: kappctrl.k14s.io/v1alpha1
       kind: App
       metadata:
