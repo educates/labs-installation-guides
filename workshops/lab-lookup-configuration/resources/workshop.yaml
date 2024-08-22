@@ -19,7 +19,7 @@ spec:
     - name: educates
       files:
       - image:
-            url: $(oci_image_cache)/educates-client-programs:3.0.0-alpha.17
+            url: $(oci_image_cache)/educates-client-programs:3.0.0-alpha.18
         path: bin
         includePaths:
         - educates-linux-$(platform_arch)
@@ -420,7 +420,7 @@ spec:
             paths:
             - .imgpkg/images.yml
             - '-'
-    # Educates 2.7.3 for virtual cluster cluster-1.
+    # Educates 2.7.4 for virtual cluster cluster-1.
     - apiVersion: v1
       kind: Secret
       metadata:
@@ -449,7 +449,7 @@ spec:
             key: config
         fetch:
         - imgpkgBundle:
-            image: ghcr.io/vmware-tanzu-labs/educates-training-platform:2.7.3
+            image: ghcr.io/vmware-tanzu-labs/educates-training-platform:2.7.4
         deploy:
         - kapp:
             rawOptions:
@@ -503,7 +503,7 @@ spec:
             key: config
         fetch:
         - imgpkgBundle:
-            image: ghcr.io/vmware-tanzu-labs/educates-installer:3.0.0-alpha.17
+            image: ghcr.io/vmware-tanzu-labs/educates-installer:3.0.0-alpha.18
         deploy:
         - kapp:
             rawOptions:
