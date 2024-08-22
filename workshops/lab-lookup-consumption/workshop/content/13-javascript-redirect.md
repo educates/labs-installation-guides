@@ -17,6 +17,11 @@ command: |-
   SESSION_ACTIVATION_URL=$(curl --silent -X POST -H "Authorization: Bearer ${ACCESS_TOKEN}" -H "Content-Type: application/json" -d '{"tenantName": "example-tenant", "workshopName": "lab-k8s-fundamentals", "clientIndexUrl": "http://files-{{< param session_hostname >}}/htdocs/javascript-redirect.html?target=http://files-{{< param session_hostname >}}/htdocs/root-of-web-site.html", "clientUserId": "end-user-id-1"}' http://educates-api.hub.{{< param session_name >}}.{{< param ingress_domain >}}/api/v1/workshops | jq -r -e .sessionActivationUrl) && echo $SESSION_ACTIVATION_URL && export SESSION_ACTIVATION_URL && envsubst < templates/embedded-dashboard.html > htdocs/embedded-dashboard.html
 ```
 
+Note that although this may work here in this workshop, it may not work where
+embedding and content security policies (CSP) are enabled. For this workshop
+environment CSP has been disabled for the Educates installation you are working
+with. So ensure you test with your actual Educates deployment.
+
 Now click below to open up this web page.
 
 ```dashboard:open-url

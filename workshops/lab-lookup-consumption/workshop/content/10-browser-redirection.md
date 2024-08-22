@@ -56,6 +56,11 @@ command: |-
   curl --silent -X POST -H "Authorization: Bearer ${ACCESS_TOKEN}" -H "Content-Type: application/json" -d '{"tenantName": "example-tenant", "workshopName": "lab-k8s-fundamentals", "clientIndexUrl": "http://files-{{< param session_hostname >}}/htdocs/close-browser-tab.html", "clientUserId": "end-user-id-1"}' http://educates-api.hub.{{< param session_name >}}.{{< param ingress_domain >}}/api/v1/workshops | jq
 ```
 
+Note that although this may work here in this workshop, it may not work where
+embedding and content security policies (CSP) are enabled. For this workshop
+environment CSP has been disabled for the Educates installation you are working
+with. So ensure you test with your actual Educates deployment.
+
 If curious as to how the web page the workshop sessions is being redirected to
 is implemented see the `htdocs/close-browser-tab.html` file.
 
