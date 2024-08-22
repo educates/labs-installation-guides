@@ -7,6 +7,7 @@
     <script>
         function redirectToTarget() {
             var target = new URLSearchParams(window.location.search).get('target');
+            var notification = new URLSearchParams(window.location.search).get('notification');
             if (target) {
                 try {
                     window.top.location.href = target;
@@ -19,8 +20,8 @@
     </script>
 
     <h1>Redirect Page</h1>
-    <p id="redirectMessage">Redirection failed. Please click the button below to redirect.</p>
-    <button id="redirectButton" onclick="redirectToTarget()">Redirect</button>
+    <p id="redirectMessage" style="display: none;">Redirection failed. Please click the button below to redirect.</p>
+    <button id="redirectButton" style="display: none;" onclick="redirectToTarget()">Redirect</button>
 
     <script>
         redirectToTarget();

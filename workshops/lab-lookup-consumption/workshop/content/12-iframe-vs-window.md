@@ -15,9 +15,9 @@ popup windows is pressed, it uses Javascript running in the web browser to
 override the target URL for the top most HTML frame displayed by the web
 browser.
 
-If you terminate the workshop session you started demonstrating where it was
-embedded, you should see this as rather than the result being nested, the whole
-browser window is correctly redirected to the target web site.
+When you terminated the workshop session you started to demonstrate embedding,
+you should have seen this rather than the result being nested, as the whole
+browser window should have been correctly redirected to the target web site.
 
 So under normal circumstances everything works fine and as one would expect.
 Because though interaction with the workshop session dashboard is part mediated

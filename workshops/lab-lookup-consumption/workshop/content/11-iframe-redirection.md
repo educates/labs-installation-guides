@@ -2,11 +2,11 @@
 title: IFrame Redirection
 ---
 
-The issue of `iframe` redirection arises where instead of a custom front end web
+The issue of iframe redirection arises where instead of a custom front end web
 portal popping out a workshop session into a new browser window, it embeds the
 workshop session dashboard within another web page.
 
-To demonstrate what is meant here, run the following command to created a web
+To demonstrate what is meant here, run the following command to create a web
 page which embeds the workshop session dashboard returned when a workshop is
 requested.
 

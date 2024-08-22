@@ -2,8 +2,8 @@
 title: Javascript Redirect
 ---
 
-Although we noted that some web browsers may place restrictions on when
-automatically run Javascript can trigger a redirection, it is recommended that
+Although we noted that some web browsers may place restrictions on when one can
+automatically run Javascript to trigger a redirection, it is recommended that
 when specifying `clientIndexUrl` with a workshop request, that instead of
 passing the URL for where you ultimately what the user redirected, that you pass
 a URL which targets a special URL handler or web page, which attempts to force

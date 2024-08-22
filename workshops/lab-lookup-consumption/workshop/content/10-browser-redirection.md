@@ -40,9 +40,9 @@ embedded Javascript to close the browser page, however it is possible a browser
 may block this and only allow a browser page to be closed from the same source
 that originally opened the browser page to begin with.
 
-A third and final option is to still attempt to automatically close the browser
-page where a browser allows it, but otherwise display a message thanking the
-user for doing the workshop and telling them it is now safe to close their
+A third and final option is thus to still attempt to automatically close the
+browser page where a browser allows it, but otherwise display a message thanking
+the user for doing the workshop and telling them it is now safe to close their
 browser page.
 
 You can test out how your browser behaves by ensuring you have terminated any
