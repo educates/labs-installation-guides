@@ -8,6 +8,7 @@
         function redirectToTarget() {
             var target = new URLSearchParams(window.location.search).get('target');
             var notification = new URLSearchParams(window.location.search).get('notification');
+            console.log("notification: " + notification);
             if (target) {
                 try {
                     window.top.location.href = target;

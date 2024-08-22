@@ -217,7 +217,8 @@ spec:
             key: config
         fetch:
         - imgpkgBundle:
-            image: ghcr.io/vmware-tanzu-labs/educates-installer:3.0.0-alpha.17
+            # image: ghcr.io/vmware-tanzu-labs/educates-installer:3.0.0-alpha.
+            image: ghcr.io/grahamdumpleton/educates-installer:redirection-query-params
         deploy:
         - kapp:
             rawOptions:

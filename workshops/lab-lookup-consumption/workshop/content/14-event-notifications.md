@@ -2,9 +2,9 @@
 title: Event Notifications
 ---
 
-You may have noticed when the redirection happened upon terminating a workshop
-session, that the URL displayed in the web browser for the target URL had a
-query string parameter appended with parameter name `notification`.
+You may have noticed for the case of where we were redirecting straight to a
+target web site page that the URL displayed in the web browser for the target
+URL had a query string parameter appended with parameter name `notification`.
 
 When using the native web interface for the training portal, this is passed
 so that the web interface can display a message banner.
@@ -37,17 +37,10 @@ may also want to rewrite the URL shown in the URL bar of the browser to remove
 the notification query string parameter to avoid it being added as part of a
 bookmark by a user.
 
-{{< warning >}} Note that there is currently a
-[bug](https://github.com/vmware-tanzu-labs/educates-training-platform/issues/558)
-in the training portal, whereby if the URL passed to `clientIndexUrl` has its
-own query string parameters, the query string parameter list including
-`notification` is blindly added to the end of the full URL, rather than parsing
-the URL to separate out any query string parameters and adding to the set of
-parameters and reconstructing the URL. This means that if the last query string
-parameter was itself a URL, the notification parameter is being added to it,
-rather than the initially targeted URL. This means that a URL handler as
-previously shown for handling redirection, will need to remove the notification
-query string parameter from the target redirection URL. This issue will be fixed
-in an upcoming update to Educates, and this workshop updated further to explain
-how to handle these notifications.
-{{< /warning >}}
+Do note though that in last example where we redirected to a web page which in
+turn forced the whole web browser page to be redirected, that this notification
+message is received as a query string parameter by the first web page. If you
+want it to be passed along to the final target URL, you will need to add it as a
+query string parameter to the target URL when forcing redirection. If required
+you could change the name of the query string parameter, and value, to match
+what is expected of whatever page you may be redirecting to.
