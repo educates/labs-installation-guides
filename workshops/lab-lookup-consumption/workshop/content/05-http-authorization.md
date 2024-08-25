@@ -12,7 +12,7 @@ by using:
 
 ```terminal:execute
 command: |-
-  ACCESS_TOKEN=$(curl -s -X POST http://educates-api.hub.{{< param session_hostname >}}/login -H "Content-Type: application/json" -d '{"username": "custom-portal", "password": "secret-password"}' | jq -r -e .access_token) && echo $ACCESS_TOKEN
+  ACCESS_TOKEN=$(curl -s -X POST http://educates-api.hub.{{< param session_hostname >}}/auth/login -H "Content-Type: application/json" -d '{"username": "custom-portal", "password": "secret-password"}' | jq -r -e .access_token) && echo $ACCESS_TOKEN
 ```
 
 Subsequent API calls using `curl` would then be in the form:

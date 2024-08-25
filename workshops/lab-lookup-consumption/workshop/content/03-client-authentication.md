@@ -6,7 +6,7 @@ Authenticating with the lookup service entails providing appropriate login
 credentials. Upon success, an access token will be returned which needs to be
 provided with any subsequent REST API requests.
 
-The URL sub path for authenticating with the lookup service is `/login`.
+The URL sub path for authenticating with the lookup service is `/auth/login`.
 
 The handler for this endpoint requires a HTTP POST request with content type
 `application/json` be submitted.
@@ -32,7 +32,7 @@ This required request is equivalent to running the following `curl` command.
 
 ```terminal:execute
 command: |-
-  curl -v -s -X POST http://educates-api.hub.{{< param session_hostname >}}/login -H "Content-Type: application/json" -d '{"username": "custom-portal", "password": "secret-password"}' | jq
+  curl -v -s -X POST http://educates-api.hub.{{< param session_hostname >}}/auth/login -H "Content-Type: application/json" -d '{"username": "custom-portal", "password": "secret-password"}' | jq
 ```
 
 Upon supplying valid credentials, a HTTP 200 response of type `application/json`

@@ -19,7 +19,7 @@ spec:
     - name: educates
       files:
       - image:
-            url: $(oci_image_cache)/educates-client-programs:3.0.0-alpha.18
+            url: $(oci_image_cache)/educates-client-programs:3.0.0-alpha.19
         path: bin
         includePaths:
         - educates-linux-$(platform_arch)
@@ -217,7 +217,7 @@ spec:
             key: config
         fetch:
         - imgpkgBundle:
-            image: ghcr.io/vmware-tanzu-labs/educates-installer:3.0.0-alpha.18
+            image: ghcr.io/vmware-tanzu-labs/educates-installer:3.0.0-alpha.19
         deploy:
         - kapp:
             rawOptions:
