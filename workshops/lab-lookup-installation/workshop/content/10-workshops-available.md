@@ -12,7 +12,7 @@ role, instead of the admin user.
 
 ```terminal:execute
 command: |-
-  ACCESS_TOKEN=$(curl --silent -X POST http://educates-api.{{< param session_name >}}.{{< param ingress_domain >}}/login -H "Content-Type: application/json" -d '{"username": "custom-portal", "password": "my-secret"}' | jq -r -e .access_token) && echo $ACCESS_TOKEN
+  ACCESS_TOKEN=$(curl --silent -X POST http://educates-api.{{< param session_name >}}.{{< param ingress_domain >}}/auth/login -H "Content-Type: application/json" -d '{"username": "custom-portal", "password": "my-secret"}' | jq -r -e .access_token) && echo $ACCESS_TOKEN
 ```
 
 A user with the tenant role has access to two main endpoints via the REST API.

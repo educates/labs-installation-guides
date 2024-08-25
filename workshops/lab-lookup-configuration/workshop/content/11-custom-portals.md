@@ -9,7 +9,7 @@ To login the user for the first custom front end web portal run:
 
 ```terminal:execute
 command: |-
-  PORTAL_1_ACCESS_TOKEN=$(curl --silent -X POST http://educates-api.hub.{{< param session_name >}}.{{< param ingress_domain >}}/login -H "Content-Type: application/json" -d '{"username": "custom-portal-1", "password": "secret-1"}' | jq -r -e .access_token) && echo $PORTAL_1_ACCESS_TOKEN
+  PORTAL_1_ACCESS_TOKEN=$(curl --silent -X POST http://educates-api.hub.{{< param session_name >}}.{{< param ingress_domain >}}/auth/login -H "Content-Type: application/json" -d '{"username": "custom-portal-1", "password": "secret-1"}' | jq -r -e .access_token) && echo $PORTAL_1_ACCESS_TOKEN
 ```
 
 The range of API endpoints a user with the `tenant` role has access to is much

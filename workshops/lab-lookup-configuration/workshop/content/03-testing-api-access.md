@@ -8,7 +8,7 @@ service.
 
 ```terminal:execute
 command: |-
-  ADMIN_ACCESS_TOKEN=$(curl --silent -X POST http://educates-api.hub.{{< param session_name >}}.{{< param ingress_domain >}}/login -H "Content-Type: application/json" -d '{"username": "admin", "password": "super-secret"}' | jq -r -e .access_token) && echo $ADMIN_ACCESS_TOKEN
+  ADMIN_ACCESS_TOKEN=$(curl --silent -X POST http://educates-api.hub.{{< param session_name >}}.{{< param ingress_domain >}}/auth/login -H "Content-Type: application/json" -d '{"username": "admin", "password": "super-secret"}' | jq -r -e .access_token) && echo $ADMIN_ACCESS_TOKEN
 ```
 
 Presuming access is granted, with this command the access token will be captured
