@@ -3,7 +3,13 @@ title: Workshop Summary
 ---
 
 You have reached the end of this workshop on installing the Educates lookup
-service. For more information about Educates see:
+service.
+
+The source files for this and other related workshops can be found at:
+
+* https://github.com/educates/labs-installation-guides
+
+For more information about Educates see:
 
 * [Educates Documentation](https://docs.educates.dev)
 

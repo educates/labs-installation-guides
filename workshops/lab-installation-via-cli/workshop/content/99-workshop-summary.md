@@ -2,8 +2,13 @@
 title: Workshop Summary
 ---
 
-You have reached the end of this workshop. For more information about Educates
-see:
+You have reached the end of this workshop.
+
+The source files for this and other related workshops can be found at:
+
+* https://github.com/educates/labs-installation-guides
+
+For more information about Educates see:
 
 * [Educates Documentation](https://docs.educates.dev)
 * [Educates GitHub Repository](https://github.com/vmware-tanzu-labs/educates-training-platform)
