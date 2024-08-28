@@ -16,13 +16,14 @@ lookup service.
 {{< note >}}
 Note that we are actually using a pre-release snapshot of Educates lookup
 service pulled from a pre-release snapshot of Educates 3.0.0. Once Educates
-3.0.0 is released, a tagged version of the installer will be used.
+3.0.0 is released, we will be able to reference it via the latest alias and
+pickup whatever is the most recent available.
 {{< /note >}}
 
 To apply this configuration to the cluster, run the command:
 
 ```terminal:execute
-command: kubectl apply -f https://raw.githubusercontent.com/educates/educates-lookup-service/main/resources/rbac.yaml
+command: kubectl apply -f https://github.com/educates/educates-lookup-service/releases/download/3.0.0-rc.1/educates-lookup-service-installer-app-rbac.yaml
 ```
 
 As well as creating the service account with required roles as mentioned, this
@@ -42,7 +43,7 @@ You are now ready to install Educates and any required services as dictated by
 the configuration you supplied. To do this run the following command:
 
 ```terminal:execute
-command: kubectl apply -f https://raw.githubusercontent.com/educates/educates-lookup-service/main/resources/app.yaml
+command: kubectl apply -f https://github.com/educates/educates-lookup-service/releases/download/3.0.0-rc.1/educates-lookup-service-installer-app.yaml
 ```
 
 The same `educates-lookup-service-installer` namespace referenced in prior steps will be used.
