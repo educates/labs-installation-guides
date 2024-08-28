@@ -19,7 +19,7 @@ spec:
     - name: educates
       files:
       - image:
-            url: $(oci_image_cache)/educates-client-programs:3.0.0-alpha.19
+            url: $(oci_image_cache)/educates-client-programs:3.0.0-rc.1
         path: bin
         includePaths:
         - educates-linux-$(platform_arch)
@@ -486,8 +486,8 @@ spec:
             policyEngine: none
           workshopSecurity:
             rulesEngine: none
-          lookupService:
-            enabled: true
+          # lookupService:
+          #   enabled: true
     - apiVersion: kappctrl.k14s.io/v1alpha1
       kind: App
       metadata:
@@ -503,7 +503,7 @@ spec:
             key: config
         fetch:
         - imgpkgBundle:
-            image: ghcr.io/vmware-tanzu-labs/educates-installer:3.0.0-alpha.19
+            image: ghcr.io/vmware-tanzu-labs/educates-installer:3.0.0-rc.1
         deploy:
         - kapp:
             rawOptions:

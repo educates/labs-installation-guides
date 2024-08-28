@@ -2,12 +2,19 @@
 title: Install Lookup Service
 ---
 
-When installing Educates, the lookup service can optionally be enabled. This
-will result in the lookup service being co-hosted with the Educates
-installation.
+When installing Educates 3.0.0 or later, the lookup service can optionally be
+enabled. This will result in the lookup service being co-hosted with the
+Educates installation.
 
-To demonstrate this, in this workshop we will install Educates with the lookup
-service into a virtual cluster created for this workshop session.
+To demonstrate installation, in this workshop we will install Educates with the
+lookup service into a virtual cluster created for this workshop session.
+
+{{< note >}}
+If you are using Educates 2.7.4 and want to be able to use the lookup service,
+or want to be able to install the lookup service in a separate cluster to the
+Educates training platform, see the separate workshop describing installation of
+a standalone instance of the lookup service.
+{{< /note >}}
 
 The required configuration for this installation is as follows. Click on the
 action block below to automatically open the embedded editor and create the file
