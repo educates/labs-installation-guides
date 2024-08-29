@@ -23,7 +23,7 @@ pickup whatever is the most recent available.
 To apply this configuration to the cluster, run the command:
 
 ```terminal:execute
-command: kubectl apply -f https://github.com/educates/educates-lookup-service/releases/download/3.0.0-rc.1/educates-lookup-service-installer-app-rbac.yaml
+command: kubectl apply -f https://github.com/educates/educates-lookup-service/releases/download/3.0.0/educates-lookup-service-installer-app-rbac.yaml
 ```
 
 As well as creating the service account with required roles as mentioned, this
@@ -43,7 +43,7 @@ You are now ready to install Educates and any required services as dictated by
 the configuration you supplied. To do this run the following command:
 
 ```terminal:execute
-command: kubectl apply -f https://github.com/educates/educates-lookup-service/releases/download/3.0.0-rc.1/educates-lookup-service-installer-app.yaml
+command: kubectl apply -f https://github.com/educates/educates-lookup-service/releases/download/3.0.0/educates-lookup-service-installer-app.yaml
 ```
 
 The same `educates-lookup-service-installer` namespace referenced in prior steps will be used.
