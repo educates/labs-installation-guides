@@ -13,18 +13,14 @@ To create the required service account and role bindings a YAML resources file
 is provided with each release of the standalone installer for the Educates
 lookup service.
 
-{{< note >}}
-Note that we are actually using a pre-release snapshot of Educates lookup
-service pulled from a pre-release snapshot of Educates 3.0.0. Once Educates
-3.0.0 is released, we will be able to reference it via the latest alias and
-pickup whatever is the most recent available.
-{{< /note >}}
-
 To apply this configuration to the cluster, run the command:
 
 ```terminal:execute
 command: kubectl apply -f https://github.com/educates/educates-lookup-service/releases/download/3.0.0/educates-lookup-service-installer-app-rbac.yaml
 ```
+
+We are using Educates 3.0.0 here, use a newer version if available, or you can
+also use the latest link that GitHub provides.
 
 As well as creating the service account with required roles as mentioned, this
 will also create a namespace called `educates-lookup-service-installer` to hold
