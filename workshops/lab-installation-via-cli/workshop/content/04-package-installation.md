@@ -6,8 +6,12 @@ With the configuration created we are ready to perform the installation by
 running the CLI command:
 
 ```terminal:execute
-command: educates admin platform deploy --config vcluster-config.yaml
+command: educates admin platform deploy --config vcluster-config.yaml --verbose
 ```
+
+**NOTE** that we are using `--verbose` flag, which is not required but give more
+detailed information on what is happening. We decided to use the flag for educational
+purpose.
 
 Using the Carvel tools linked into the `educates` CLI binary, this will download
 the Educates package files (using `vendir`), customize the package YAML files

@@ -19,10 +19,7 @@ spec:
     - name: educates
       files:
       - image:
-            url: $(oci_image_cache)/educates-client-programs:3.0.0
-        path: bin
-        includePaths:
-        - educates-linux-$(platform_arch)
+          url: $(oci_image_cache)/educates:v3.3.2
   session:
     namespaces:
       budget: x-large
@@ -117,7 +114,7 @@ spec:
       stringData:
         values.yaml: |
           vcluster:
-            image: rancher/k3s:v1.25.3-k3s1
+            image: rancher/k3s:v1.29.0-k3s1
           syncer:
             extraArgs:
             - --tls-san=hub-vcluster.$(session_namespace)-hub.svc.$(cluster_domain)
@@ -167,7 +164,7 @@ spec:
             name: vcluster
             repository:
               url: https://charts.loft.sh
-            version: "0.19.7"
+            version: "0.19.9"
         template:
         - helmTemplate:
             name: hub-vcluster
@@ -220,7 +217,7 @@ spec:
       stringData:
         values.yaml: |
           vcluster:
-            image: rancher/k3s:v1.25.3-k3s1
+            image: rancher/k3s:v1.29.0-k3s1
           syncer:
             extraArgs:
             - --tls-san=cluster-1-vcluster.$(session_namespace)-cluster-1.svc.$(cluster_domain),cluster-1-vcluster.default.svc.$(cluster_domain)
@@ -235,6 +232,8 @@ spec:
           sync:
             ingresses:
               enabled: true
+          exportKubeConfig:
+            context: "cluster-1"              
     - apiVersion: kappctrl.k14s.io/v1alpha1
       kind: App
       metadata:
@@ -249,7 +248,7 @@ spec:
             name: vcluster
             repository:
               url: https://charts.loft.sh
-            version: "0.19.7"
+            version: "0.19.9"
         template:
         - helmTemplate:
             name: cluster-1-vcluster
@@ -302,7 +301,7 @@ spec:
       stringData:
         values.yaml: |
           vcluster:
-            image: rancher/k3s:v1.25.3-k3s1
+            image: rancher/k3s:v1.29.0-k3s1
           syncer:
             extraArgs:
             - --tls-san=cluster-2-vcluster.$(session_namespace)-cluster-2.svc.$(cluster_domain),cluster-2-vcluster.default.svc.$(cluster_domain)
@@ -333,7 +332,7 @@ spec:
             name: vcluster
             repository:
               url: https://charts.loft.sh
-            version: "0.19.7"
+            version: "0.19.9"
         template:
         - helmTemplate:
             name: cluster-2-vcluster
@@ -385,10 +384,19 @@ spec:
         namespace: $(session_namespace)-hub
       stringData:
         values.yaml: |
-          applicationNamespace:
-            name: educates
+          clusterInfrastructure:
+            provider: vcluster
+          clusterPackages:
+            kyverno:
+              enabled: false
           clusterIngress:
             domain: "hub.$(session_name).$(ingress_domain)"
+          clusterSecurity:
+            policyEngine: none
+          workshopSecurity:
+            rulesEngine: none
+          lookupService:
+            enabled: true
     - apiVersion: kappctrl.k14s.io/v1alpha1
       kind: App
       metadata:
@@ -404,7 +412,7 @@ spec:
             key: config
         fetch:
         - imgpkgBundle:
-            image: ghcr.io/educates/educates-lookup-service-installer:main
+            image: ghcr.io/educates/educates-installer:3.3.2
         deploy:
         - kapp:
             rawOptions:
@@ -413,14 +421,16 @@ spec:
         - ytt:
             paths:
             - config
+            - kbld/kbld-bundle.yaml
             valuesFrom:
+            - path: kbld/kbld-images.yaml
             - secretRef:
                 name: educates-lookup-service-values
         - kbld:
             paths:
             - .imgpkg/images.yml
             - '-'
-    # Educates 2.7.4 for virtual cluster cluster-1.
+    # Educates 3.3.2 for virtual cluster cluster-1.
     - apiVersion: v1
       kind: Secret
       metadata:
@@ -428,12 +438,19 @@ spec:
         namespace: $(session_namespace)-cluster-1
       stringData:
         values.yaml: |
+          clusterInfrastructure:
+            provider: vcluster
+          clusterPackages:
+            kyverno:
+              enabled: false
           clusterIngress:
             domain: "cluster-1.$(session_name).$(ingress_domain)"
           clusterSecurity:
             policyEngine: none
           workshopSecurity:
             rulesEngine: none
+          # lookupService:
+          #   enabled: true
     - apiVersion: kappctrl.k14s.io/v1alpha1
       kind: App
       metadata:
@@ -449,7 +466,7 @@ spec:
             key: config
         fetch:
         - imgpkgBundle:
-            image: ghcr.io/vmware-tanzu-labs/educates-training-platform:2.7.4
+            image: ghcr.io/educates/educates-installer:3.3.2
         deploy:
         - kapp:
             rawOptions:
@@ -458,16 +475,16 @@ spec:
         - ytt:
             paths:
             - config
-            - kbld-bundle.yaml
+            - kbld/kbld-bundle.yaml
             valuesFrom:
-            - path: kbld-images.yaml
+            - path: kbld/kbld-images.yaml
             - secretRef:
                 name: educates-training-platform-values
         - kbld:
             paths:
             - .imgpkg/images.yml
             - '-'
-    # Educates 3.0.0 for virtual cluster cluster-2.
+    # Educates 3.3.2 for virtual cluster cluster-2.
     - apiVersion: v1
       kind: Secret
       metadata:
@@ -503,7 +520,7 @@ spec:
             key: config
         fetch:
         - imgpkgBundle:
-            image: ghcr.io/vmware-tanzu-labs/educates-installer:3.0.0
+            image: ghcr.io/educates/educates-installer:3.3.2
         deploy:
         - kapp:
             rawOptions:
@@ -525,8 +542,8 @@ spec:
     images:
       registries:
       - content:
-        - destination: /educates-client-programs
-          prefix: /vmware-tanzu-labs/educates-client-programs
+        - destination: educates
+          prefix: /educates/educates-extension-packages/educates
           stripPrefix: true
         onDemand: true
         urls:

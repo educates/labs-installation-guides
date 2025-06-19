@@ -11,7 +11,7 @@ The source files for this and other related workshops can be found at:
 For more information about Educates see:
 
 * [Educates Documentation](https://docs.educates.dev)
-* [Educates GitHub Repository](https://github.com/vmware-tanzu-labs/educates-training-platform)
+* [Educates GitHub Repository](https://github.com/educates/educates-training-platform)
 
 If you have questions about Educates or need help installing or using it, you
 can reach out to the developers of Educates and other Educates users in the

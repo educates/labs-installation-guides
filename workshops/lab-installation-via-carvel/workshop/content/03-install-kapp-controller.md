@@ -16,5 +16,5 @@ run:
 command: kubectl apply -f https://github.com/carvel-dev/kapp-controller/releases/latest/download/release.yml
 ```
 
-You will need to have cluster admin access to the cluster in order to install
-`kapp-controller` and install Educates.
+**NOTE**: Outside the scope of this workshop, you will need to have cluster admin access to 
+your cluster in order to install `kapp-controller` and install Educates.

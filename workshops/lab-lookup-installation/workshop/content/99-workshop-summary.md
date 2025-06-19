@@ -28,7 +28,7 @@ Educates documentation at:
 
 The GitHub repository for Educates can be found at:
 
-* [Educates GitHub Repository](https://github.com/vmware-tanzu-labs/educates-training-platform)
+* [Educates GitHub Repository](https://github.com/educates/educates-training-platform)
 
 The current source code for the lookup service can be found in the
 `lookup-service` subdirectory of the GitHub repository.

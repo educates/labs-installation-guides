@@ -22,13 +22,11 @@ to automatically open the embedded editor and create the file for you.
 file: ~/vcluster-config.yaml
 text: |
     # Specify the infrastructure provider hosting the Kubernetes cluster.
-
     clusterInfrastructure:
         provider: vcluster
 
     # Specify the ingress domain to be used to access the workshops hosted by
     # the Educates installation.
-
     clusterIngress:
         domain: {{< param session_name >}}.{{< param ingress_domain >}}
 ```
